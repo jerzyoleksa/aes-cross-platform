@@ -12,6 +12,9 @@ In Java specification, any Java distribution must implement just 2 padding types
 By the way Pkcs standard is much broader security package and padding is just a minor subset of it
 <br/><br/>
 
+> In order to use Bouncy Castle as the security provider, you can either change the java.policy file in your JVM (and its the hard way),
+> or you can use the signed jar file provided by the Bouncy Castle on their website (it was bcprov-jdk15to18-172.jar in my case).
+
 ```java	
 import java.security.Security;
 import java.util.Base64;
