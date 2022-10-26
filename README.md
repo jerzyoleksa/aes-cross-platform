@@ -48,7 +48,7 @@ public class DecryptBC {
 		System.out.println(new String(Base64.getEncoder().encode(cipherText)));
 	}
 
-	}
+}
 ```
 
 
