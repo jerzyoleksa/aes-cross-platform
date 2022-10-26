@@ -25,8 +25,6 @@ public class DecryptBC {
 	
 	
 	public static byte[] encryptMessage(byte[] message, byte[] keyBytes) throws Exception {
-	 
-	    //Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 	    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding", "BC");
 	    SecretKey secretKey = new SecretKeySpec(keyBytes, "AES");
 	    cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -49,9 +47,10 @@ public class DecryptBC {
     byte[] originalMessageBytes = "my secret data".getBytes();
     byte[] encryptionKeyBytes = encryptionKeyString.getBytes();
     
-    System.out.println(new String(encryptionKeyBytes));
     byte[] cipherText = encryptMessage(originalMessageBytes, encryptionKeyBytes);
     System.out.println(new String(Base64.getEncoder().encode(cipherText)));
   }
+  
 }
+        
 ```
