@@ -16,7 +16,6 @@ package com.garnizon.encrypt.aes;
 
 import java.security.Security;
 import java.util.Base64;
-
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -48,6 +47,7 @@ public class DecryptBC {
 		byte[] cipherText = encryptMessage(originalMessageBytes, encryptionKeyBytes);
 		System.out.println(new String(Base64.getEncoder().encode(cipherText)));
 	}
+
 }
 
 ```
