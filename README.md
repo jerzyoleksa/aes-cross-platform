@@ -57,4 +57,49 @@ public class DecryptBC {
 }
 ```
 
+<br/><br/>
+<b>Python</b>
+<br/>
+```python	
+from Crypto.Cipher import AES
+from pkcs7 import PKCS7Encoder
+import pkcs7,threading, base64
 
+
+text='my secret data'
+key = 'secret#456!23key'
+
+#TypeError: Object type <class 'str'> cannot be passed to C code
+#In Python 3, encode it into a bytearray:
+
+keyEnc = key.encode("utf8")
+textEnc = text.encode("utf8")
+
+aes = AES.new(keyEnc, AES.MODE_ECB)
+
+#PKCS7Encoder doesnt work with strings
+encoder = PKCS7Encoder()
+pad_text = encoder.encode(text)
+pad_textEnc = pad_text.encode("utf8")
+
+print('text:' + text)
+print('pad_text:', pad_text)
+print('pad_textEnc:', pad_textEnc)
+
+cipher = aes.encrypt(pad_textEnc)
+enc_cipher = base64.b64encode(cipher)
+
+print('cipher:', cipher)
+print('enc_cipher:', enc_cipher)
+
+decodetext =  base64.b64decode(enc_cipher)
+
+aes = AES.new(keyEnc, AES.MODE_ECB)
+cipher = aes.decrypt(decodetext)
+print(cipher)
+
+cipherDec = cipher.decode("utf8")
+
+pad_text = encoder.decode(cipherDec)
+print(pad_text)
+```
